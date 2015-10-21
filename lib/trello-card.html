@@ -1,0 +1,17 @@
+{{#if this}}
+  <a href="{{ link }}" class="trello-card-overlay">
+    <span>{{ name }}</span>
+  </a>
+  {{#if idAttachmentCover}}
+    <trello-attachment card-id="{{ id }}" attachment-id="{{ idAttachmentCover }}"></trello-attachment>
+  {{/if}}
+  <div class="trello-card-info">
+    <h3 class="trello-card-title">
+      {{ name }}
+    </h3>
+  </div>
+{{else}}
+  <div class="trello-card-info">
+    Loading...
+  </div>
+{{/if}}

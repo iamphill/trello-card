@@ -1,0 +1,45 @@
+trello-attachment {
+  display: block; }
+  trello-attachment .trello-attachment-image {
+    min-height: 120px;
+    background-color: #bfcbcd;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat; }
+
+trello-card {
+  display: block;
+  position: relative;
+  top: 0;
+  max-width: 300px;
+  border-bottom: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 3px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  overflow: hidden;
+  -webkit-transition: all 0.17s ease-out;
+  transition: all 0.17s ease-out; }
+  trello-card:hover {
+    top: -5px;
+    background-color: #edeff0;
+    border-color: #d6dadc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); }
+  trello-card .trello-card-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    overflow: hidden; }
+    trello-card .trello-card-overlay > span {
+      display: block;
+      text-indent: -9999999999px; }
+  trello-card .trello-card-info {
+    padding: 8px 8px; }
+  trello-card .trello-card-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 1em;
+    font-weight: normal; }

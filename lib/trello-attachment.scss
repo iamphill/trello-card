@@ -1,0 +1,11 @@
+trello-attachment {
+  display: block;
+
+  .trello-attachment-image {
+    min-height: 120px;
+    background-color: rgb(191, 203, 205);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
