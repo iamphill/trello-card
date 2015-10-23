@@ -77,7 +77,7 @@ var TrelloAttachment = (function (_HTMLElement) {
 document.registerElement('trello-attachment', TrelloAttachment);
 
 },{"./trello-attachment.html":1,"handlebars":37}],3:[function(require,module,exports){
-module.exports = "{{#if this}}\n  <a href=\"{{ link }}\" class=\"trello-card-overlay\">\n    <span>{{ name }}</span>\n  </a>\n  {{#if idAttachmentCover}}\n    <trello-attachment card-id=\"{{ id }}\" attachment-id=\"{{ idAttachmentCover }}\"></trello-attachment>\n  {{/if}}\n  <div class=\"trello-card-info\">\n    <h3 class=\"trello-card-title\">\n      {{ name }}\n    </h3>\n    {{#if badges.description}}\n      <span class=\"trello-card-description\">\n        <i></i>\n        <i></i>\n        <i></i>\n        <i></i>\n      </span>\n    {{/if}}\n  </div>\n{{else}}\n  <div class=\"trello-card-info\">\n    Loading...\n  </div>\n{{/if}}\n";
+module.exports = "{{#if this}}\n  {{#ifCond this 'error'}}\n    <div class=\"trello-card-info\">\n      <h3 class=\"trello-card-title\">\n        Error loading card.\n      </h3>\n    </div>\n  {{else}}\n    <a href=\"{{ url }}\" class=\"trello-card-overlay\">\n      <span>{{ name }}</span>\n    </a>\n    {{#if idAttachmentCover}}\n      <trello-attachment card-id=\"{{ id }}\" attachment-id=\"{{ idAttachmentCover }}\"></trello-attachment>\n    {{/if}}\n    <div class=\"trello-card-info\">\n      <h3 class=\"trello-card-title\">\n        {{ name }}\n      </h3>\n      {{#if badges.description}}\n        <span class=\"trello-card-description\">\n          <i></i>\n          <i></i>\n          <i></i>\n          <i></i>\n        </span>\n      {{/if}}\n    </div>\n  {{/ifCond}}\n{{else}}\n  <div class=\"trello-card-info\">\n    <h3 class=\"trello-card-title\">\n      Loading...\n    </h3>\n  </div>\n{{/if}}\n";
 
 },{}],4:[function(require,module,exports){
 'use strict';
@@ -94,6 +94,14 @@ var Handlebars = require('handlebars');
 var html = require('./trello-card.html');
 require('whatwg-fetch');
 require('./trello-attachment.js');
+
+// Register Handlebars helpers
+Handlebars.registerHelper('ifCond', function (v1, v2, options) {
+  if (v1 === v2) {
+    return options.fn(this);
+  }
+  return options.inverse(this);
+});
 
 var TrelloCard = (function (_HTMLElement) {
   _inherits(TrelloCard, _HTMLElement);
@@ -143,6 +151,10 @@ var TrelloCard = (function (_HTMLElement) {
         _this.data = json;
 
         // Render the template to the DOM
+        _this._render();
+      })['catch'](function () {
+        _this.data = 'error';
+
         _this._render();
       });
     }

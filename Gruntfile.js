@@ -10,7 +10,17 @@ module.exports = function (grunt) {
         }
       }
     },
+    uglify: {
+      dist: {
+        files: {
+          'dist/trello-card.min.js': ['dist/trello-card.js']
+        }
+      }
+    },
     sass: {
+      options: {
+        outputStyle: 'compressed'
+      },
       dist: {
         files: {
           'dist/trello-card.css': 'lib/trello-card.scss'
@@ -20,7 +30,7 @@ module.exports = function (grunt) {
     watch: {
       js: {
         files: ['lib/*.js', 'lib/*.html'],
-        tasks: ['browserify']
+        tasks: ['browserify', 'uglify']
       },
       sass: {
         files: ['lib/*.scss'],
@@ -28,13 +38,14 @@ module.exports = function (grunt) {
       }
     },
     qunit: {
-      all: ['test/**.html']
+      all: ['test/**/*.html']
     }
   });
 
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-sass');
 
   grunt.registerTask('default', [

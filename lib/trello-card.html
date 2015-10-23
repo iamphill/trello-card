@@ -1,25 +1,35 @@
 {{#if this}}
-  <a href="{{ link }}" class="trello-card-overlay">
-    <span>{{ name }}</span>
-  </a>
-  {{#if idAttachmentCover}}
-    <trello-attachment card-id="{{ id }}" attachment-id="{{ idAttachmentCover }}"></trello-attachment>
-  {{/if}}
-  <div class="trello-card-info">
-    <h3 class="trello-card-title">
-      {{ name }}
-    </h3>
-    {{#if badges.description}}
-      <span class="trello-card-description">
-        <i></i>
-        <i></i>
-        <i></i>
-        <i></i>
-      </span>
+  {{#ifCond this 'error'}}
+    <div class="trello-card-info">
+      <h3 class="trello-card-title">
+        Error loading card.
+      </h3>
+    </div>
+  {{else}}
+    <a href="{{ url }}" class="trello-card-overlay">
+      <span>{{ name }}</span>
+    </a>
+    {{#if idAttachmentCover}}
+      <trello-attachment card-id="{{ id }}" attachment-id="{{ idAttachmentCover }}"></trello-attachment>
     {{/if}}
-  </div>
+    <div class="trello-card-info">
+      <h3 class="trello-card-title">
+        {{ name }}
+      </h3>
+      {{#if badges.description}}
+        <span class="trello-card-description">
+          <i></i>
+          <i></i>
+          <i></i>
+          <i></i>
+        </span>
+      {{/if}}
+    </div>
+  {{/ifCond}}
 {{else}}
   <div class="trello-card-info">
-    Loading...
+    <h3 class="trello-card-title">
+      Loading...
+    </h3>
   </div>
 {{/if}}
