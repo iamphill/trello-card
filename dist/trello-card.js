@@ -57,7 +57,6 @@ var TrelloAttachment = (function (_HTMLElement) {
         return response.json();
       }).then(function (json) {
         _this.data = json;
-        console.log(json);
 
         // Render the template to the DOM
         _this._render();
@@ -78,7 +77,7 @@ var TrelloAttachment = (function (_HTMLElement) {
 document.registerElement('trello-attachment', TrelloAttachment);
 
 },{"./trello-attachment.html":1,"handlebars":37}],3:[function(require,module,exports){
-module.exports = "{{#if this}}\n  <a href=\"{{ link }}\" class=\"trello-card-overlay\">\n    <span>{{ name }}</span>\n  </a>\n  {{#if idAttachmentCover}}\n    <trello-attachment card-id=\"{{ id }}\" attachment-id=\"{{ idAttachmentCover }}\"></trello-attachment>\n  {{/if}}\n  <div class=\"trello-card-info\">\n    <h3 class=\"trello-card-title\">\n      {{ name }}\n    </h3>\n  </div>\n{{else}}\n  <div class=\"trello-card-info\">\n    Loading...\n  </div>\n{{/if}}\n";
+module.exports = "{{#if this}}\n  <a href=\"{{ link }}\" class=\"trello-card-overlay\">\n    <span>{{ name }}</span>\n  </a>\n  {{#if idAttachmentCover}}\n    <trello-attachment card-id=\"{{ id }}\" attachment-id=\"{{ idAttachmentCover }}\"></trello-attachment>\n  {{/if}}\n  <div class=\"trello-card-info\">\n    <h3 class=\"trello-card-title\">\n      {{ name }}\n    </h3>\n    {{#if badges.description}}\n      <span class=\"trello-card-description\">\n        <i></i>\n        <i></i>\n        <i></i>\n        <i></i>\n      </span>\n    {{/if}}\n  </div>\n{{else}}\n  <div class=\"trello-card-info\">\n    Loading...\n  </div>\n{{/if}}\n";
 
 },{}],4:[function(require,module,exports){
 'use strict';

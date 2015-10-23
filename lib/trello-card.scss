@@ -47,3 +47,21 @@ trello-card {
     font-weight: normal;
   }
 }
+
+.trello-card-description {
+  display: inline-block;
+  margin-top: 8px;
+
+  > i {
+    display: block;
+    width: 17px;
+    height: 2px;
+    margin-bottom: 2px;
+    background: #999;
+
+    &:last-child {
+      width: 12px;
+      margin-bottom: 0;
+    }
+  }
+}

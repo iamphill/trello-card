@@ -9,6 +9,14 @@
     <h3 class="trello-card-title">
       {{ name }}
     </h3>
+    {{#if badges.description}}
+      <span class="trello-card-description">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+      </span>
+    {{/if}}
   </div>
 {{else}}
   <div class="trello-card-info">
