@@ -26,12 +26,21 @@ module.exports = function (grunt) {
         files: ['lib/*.scss'],
         tasks: ['sass']
       }
+    },
+    qunit: {
+      all: ['test/**.html']
     }
   });
 
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-sass');
 
-  grunt.registerTask('default', ['watch']);
+  grunt.registerTask('default', [
+    'watch'
+  ]);
+  grunt.registerTask('test', [
+    'qunit'
+  ]);
 };

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="lib/qunit.css" />
+  <script>
+  if (typeof HTMLElement !== 'function'){
+    var _HTMLElement = function(){};
+    _HTMLElement.prototype = HTMLElement.prototype;
+    HTMLElement = _HTMLElement;
+  }
+  window.fetch = null;
+  </script>
+  <script src="lib/register-element.js"></script>
+  <script src="lib/promise.js"></script>
+  <script src="lib/sinon.js"></script>
+  <script src="../dist/trello-card.js"></script>
+  <script src="lib/qunit.js"></script>
+</head>
+<body>
+  <div id="js-test"></div>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="test.js"></script>
+</body>
+</html>
